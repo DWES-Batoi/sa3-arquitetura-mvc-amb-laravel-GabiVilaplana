@@ -22,9 +22,9 @@ install:
 	# Crea Laravel solo si no existe (no pisa nada)
 	if [ ! -f artisan ]; then \
 		docker compose run --rm app bash -lc 'set -e; \
-		  composer create-project laravel/laravel /tmp/laravel; \
-		  shopt -s dotglob; \
-		  cp -an /tmp/laravel/* /var/www/html/'; \
+		composer create-project laravel/laravel /tmp/laravel; \
+		shopt -s dotglob; \
+		cp -an /tmp/laravel/* /var/www/html/'; \
 	fi
 	cp -n .env.example .env || true
 	docker compose run --rm app php artisan key:generate
